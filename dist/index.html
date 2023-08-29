@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ODIN project battleships</title>
+    <script src="./main.js" defer></script>
+    <style>
+        @font-face {
+            font-family: customFont;
+            src: url('../fonts/ARCADECLASSIC.TTF');
+        }
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        
+        body {
+            background: #28282B;
+        }
+
+        h1 {
+            padding: 10px;
+            background: linear-gradient(#eee, #333);
+            background-clip: border-box;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: customFont;
+            font-size: 6rem;
+            text-align: center;
+        }
+
+        dialog {
+            top: 5vh;
+            border-radius: 5px;
+            -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+            box-shadow: 5px 5px 15px 5px #000000;
+            position: absolute;
+            margin: auto;
+            width: 30vw;
+            height: 35vw;
+            padding: 20px;
+            border: 10px inset rgb(31, 31, 105);
+            background: #525252; /* fallback for old browsers */
+            
+        }
+
+        #dialog-form {
+            height: 100%;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+        }
+
+        fieldset {
+            text-align: left;
+            display: flex;
+            justify-self: center;
+            flex-flow: column nowrap;
+            border: none;
+        }
+
+        label {
+            font-family: customFont;
+            font-size: 2rem;
+        }
+
+        #submit {
+
+            width: 10vw;
+            background: #8b9881;
+            height: 2vw;
+        }
+
+        main {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+            column-gap: 20px;
+        }
+        section {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            flex-flow: column nowrap;
+        }
+
+        .computer-place {
+            font-family: customFont;
+            font-size: 2rem;
+            height: 800px;
+            width: 600px;
+            color: red;
+        }
+        .player-place {
+            font-family: customFont;
+            font-size: 2rem;
+            height: 800px;
+            width: 600px;
+            color: green;
+        }
+        #player-board div,#enemy-board div{
+            width: 55px;
+            height: 55px;
+            background: whitesmoke;
+            transition:all 300ms ease 10ms;
+        }
+        
+        #player-board div:hover,#enemy-board div:hover{
+            opacity: 0;
+        }
+    
+        #player-board ,#enemy-board {
+            display: flex;
+            gap: 1px;
+            flex-flow: row wrap;
+        }
+
+        #place-board {
+            width: 210px;
+            height: 210px;
+            display: flex;
+            gap: 1px;
+            flex-flow: row wrap;
+        }
+
+        #place-board div{
+            width: 20px;
+            height: 20px;
+            background: whitesmoke;
+            transition:all 300ms ease 10ms;
+        }
+
+        #place-board div:hover{
+            opacity: 0;
+        }
+
+        #win-display {
+            margin: auto;
+            width: 600px;
+            height: 800px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            font-family: customFont;
+            font-size: 2rem;
+        }
+
+        #score-board {
+            font: customFont 2rem;
+            text-align: center;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <dialog open>
+        <form id="dialog-form" action="" method="dialog">
+            <label for="change-pos">horizontal</label>
+            <input type="checkbox" id="change-pos">
+            <div id="place-board"></div>
+            <fieldset>
+                <label for="name-input">Name:</label>
+                <input id="name-input" type="text">
+            </fieldset>
+            <input id="submit" type="submit" value="start Game">
+        </form>
+        <div></div>
+    </dialog>
+    <header>
+        <h1>Battlefield</h1>
+    </header>
+    <div id="score-board"></div>
+    <main>
+        <section class="player-place">
+            <div id="player-name">player:</div>
+            <div id="player-board"></div>
+        </section>
+        <section class="computer-place">
+            <div>Computer</div>
+            <div id="enemy-board">
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>
