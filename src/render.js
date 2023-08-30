@@ -61,6 +61,7 @@ const render = () => {
 
 const placeBoatRender = (hor,coordinates,length) => {
     const placeBoard = document.querySelector('#place-board');
+    const playerBoard = document.querySelector('#player-board');
     const x = parseInt(coordinates.split(',')[0]);
     const y = parseInt(coordinates.split(',')[1]);
     const corArr = [];
@@ -75,6 +76,11 @@ const placeBoatRender = (hor,coordinates,length) => {
         }
     }
     placeBoard.childNodes.forEach((value) => {
+        if(corArr.includes(value.getAttribute('pos'))){
+            value.style.backgroundColor = 'blue';
+        }
+    })
+    playerBoard.childNodes.forEach((value) => {
         if(corArr.includes(value.getAttribute('pos'))){
             value.style.backgroundColor = 'blue';
         }
